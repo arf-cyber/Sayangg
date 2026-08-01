@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Girlfriend Day 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f051d 0%, #2a0845 50%, #15002a 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- HALAMAN WELCOME (SURAT & PESAWAT) --- */
+        #welcomeScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e0b36 0%, #0f051d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            padding: 20px;
+        }
+
+        .envelope-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(244, 114, 182, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 35px 25px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 360px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .paper-plane {
+            font-size: 55px;
+            display: inline-block;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(244, 114, 182, 0.8));
+            animation: floatPlane 3s ease-in-out infinite;
+        }
+
+        @keyframes floatPlane {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+        }
+
+        .fly-away {
+            animation: flyPlaneOut 1s forwards ease-in-out !important;
+        }
+
+        @keyframes flyPlaneOut {
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+            30% { transform: translateY(20px) scale(0.9) rotate(-10deg); }
+            100% { transform: translate(300px, -400px) scale(1.5) rotate(35deg); opacity: 0; }
+        }
+
+        .welcome-title {
+            font-size: 1.4rem;
+            color: #f472b6;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .welcome-sub {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn-open {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-open:active {
+            transform: scale(0.95);
+        }
+
+        /* --- PARTIKEL LOVE MELAYANG --- */
+        .heart {
+            position: fixed;
+            font-size: 22px;
+            animation: floatUp 4.5s linear infinite;
+            bottom: -50px;
+            z-index: 1;
+            pointer-events: none;
+            filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.6));
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* --- CARD UTAMA --- */
+        .card {
+            background: rgba(30, 16, 48, 0.92);
+            border: 1px solid rgba(244, 114, 182, 0.4);
+            backdrop-filter: blur(12px);
+            padding: 28px 20px;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(236, 72, 153, 0.3);
+            text-align: center;
+            max-width: 390px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .gif-header {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 12px auto;
+            display: block;
+            border: 3px solid #f472b6;
+            box-shadow: 0 0 15px rgba(244, 114, 182, 0.5);
+        }
+
+        .gif-result {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            border-radius: 18px;
+            margin: 0 auto 12px auto;
+            display: block;
+        }
+
+        h1 {
+            background: linear-gradient(90deg, #f472b6, #fb7185, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .btn-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #f1f5f9;
+            border: 1px solid rgba(244, 114, 182, 0.35);
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+            background: rgba(244, 114, 182, 0.25);
+        }
+
+        .btn-highlight {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            text-align: center;
+        }
+
+        .btn-input {
+            background: rgba(56, 189, 248, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+
+        .result-box {
+            display: none;
+            background: rgba(15, 5, 29, 0.95);
+            padding: 18px;
+            border-radius: 20px;
+            color: #e2e8f0;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            border: 1px dashed #f472b6;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .input-text {
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(244, 114, 182, 0.4);
+            border-radius: 12px;
+            padding: 10px;
+            color: #fff;
+            font-size: 0.85rem;
+            outline: none;
+            resize: none;
+            margin: 10px 0;
+        }
+
+        .btn-send {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .bar-container { margin: 8px 0; }
+        .bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; color: #cbd5e1; margin-bottom: 3px; }
+        .progress-bar { width: 100%; background: rgba(255, 255, 255, 0.1); height: 10px; border-radius: 6px; overflow: hidden; }
+        .fill { height: 100%; background: linear-gradient(90deg, #f472b6, #38bdf8); border-radius: 6px; width: 0%; transition: width 1s ease; }
+    </style>
+</head>
+<body>
+
+    <!-- HALAMAN WELCOME SURAT CINTA -->
+    <div id="welcomeScreen">
+        <div class="envelope-card">
+            <div class="paper-plane" id="planeIcon">✈️</div>
+            <div class="welcome-title">Ada Surat Spesial Buat Kamu 💌</div>
+            <div class="welcome-sub">Pesawat kertas ini ngebawa pesan manis khusus di hari Girlfriend Day. Tekan tombol di bawah buat buka suratnya ya!</div>
+            <button class="btn-open" onclick="bukaSurat()">📩 Buka Surat Cinta</button>
+        </div>
+    </div>
+
+    <!-- CARD UTAMA -->
+    <div class="card">
+        <img class="gif-header" src="https://i.giphy.com/MDJ9IbxxvDUQM.gif" alt="Cat Kiss">
+        
+        <h1>Happy Girlfriend Day!</h1>
+        <p class="subtitle">Official Interactive Card & Surprise ✨</p>
+
+        <div class="btn-grid">
+            <button class="btn" onclick="analisaMatch()">📊 1. Match Score & Chemistry</button>
+            <button class="btn" onclick="pesanPenting()">💌 2. Pesan Khusus Buat Kamu</button>
+            <button class="btn" onclick="alasanSuka()">⭐ 3. Hal yang Paling Aku Suka</button>
+            <button class="btn" onclick="bikinGakNgambek()">🥺 4. Jangan Marah & Ngambek Lagi Ya</button>
+            <button class="btn" onclick="spinDateIdea()">🎲 5. Acak Agenda Kegiatan Hari Ini</button>
+            <button class="btn btn-input" onclick="tampilFormKetik()">✍️ 6. Tulis Harapan / Curhatan Kamu</button>
+            <button class="btn btn-highlight" onclick="pilihVoucher()">🎡 7. Spin Seberapa Besar Cintaku</button>
+        </div>
+
+        <div class="result-box" id="resultText"></div>
+    </div>
+
+    <script>
+        var NOMOR_WA = "6281615907746";
+
+        // Fungsi Buka Surat dengan Animasi Pesawat Terbang
+        function bukaSurat() {
+            var plane = document.getElementById('planeIcon');
+            var screen = document.getElementById('welcomeScreen');
+            
+            plane.classList.add('fly-away');
+
+            setTimeout(function() {
+                screen.style.opacity = '0';
+                screen.style.visibility = 'hidden';
+            }, 600);
+        }
+
+        // Animasi Partikel Hati Melayang
+        var heartEmojis = ['💖', '💕', '❤️', '💗', '✨'];
+        function createHeart() {
+            var heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 95 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2.5 + 3) + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                if (heart && heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, 5500);
+        }
+        setInterval(createHeart, 300);
+
+        function showBox(content) {
+            var box = document.getElementById("resultText");
+            box.style.display = "block";
+            box.innerHTML = content;
+        }
+
+        // 1. MATCH SCORE
+        function analisaMatch() {
+            var html = '<img class="gif-result" style="object-fit:cover;" src="https://i.giphy.com/vFKqnCdLPNOKc.gif" alt="Cat Happy">' +
+                '<b style="color:#f472b6;">📊 Relationship Metrics:</b><br><br>' +
+                '<div class="bar-container">' +
+                    '<div class="bar-label"><span>Kecocokan Obrolan</span><span>99%</span></div>' +
+                    '<div class="progress-bar"><div class="fill" id="b1"></div></div>' +
+                '</div>' +
+                '<div class="bar-container">' +
+                    '<div class="bar-label"><span>Rasa Sayang & Peduli</span><span>100%</span></div>' +
+                    '<div class="progress-bar"><div class="fill" id="b2"></div></div>' +
+                '</div>' +
+                '<div class="bar-container">' +
+                    '<div class="bar-label"><span>Tingkat Kangen Tiap Hari</span><span>100%</span></div>' +
+                    '<div class="progress-bar"><div class="fill" id="b3"></div></div>' +
+                '</div><br>' +
+                '📌 <b>Kesimpulan:</b> Kamu adalah orang yang paling berharga & nggak ada gantinya! 💖';
+            
+            showBox(html);
+
+            setTimeout(function() {
+                var el1 = document.getElementById("b1");
+                var el2 = document.getElementById("b2");
+                var el3 = document.getElementById("b3");
+                if (el1) el1.style.width = "99%";
+                if (el2) el2.style.width = "100%";
+                if (el3) el3.style.width = "100%";
+            }, 100);
+        }
+
+        // 2. PESAN KHUSUS
+        function pesanPenting() {
+            showBox(
+                '<img class="gif-result" style="object-fit:cover;" src="https://i.giphy.com/Lq0h93752f6J9tijrh.gif" alt="Cat Hug">' +
+                '💌 <b>Pesan Singkat:</b><br><br>' +
+                'Makasih ya udah selalu sabar, nemenin, dan hadir di hari-hari aku. Maafin kalau aku masih banyak kurangnya atau sering bikin kamu kesel. Happy Girlfriend Day ya cantik! ✨🥰'
+            );
+        }
+
+        // 3. HAL PALING DISUKA
+        function alasanSuka() {
+            var list = [
+                "⭐ <b>Hal Ter-favorit:</b> Senyuman kamu dan cara kamu perhatian sama hal-hal kecil.",
+                "⭐ <b>Hal Ter-favorit:</b> Kamu tuh selalu bisa bikin suasana jadi beda dan bikin aku nyaman.",
+                "⭐ <b>Hal Ter-favorit:</b> Cara kamu ngobrol dan kejujuran kamu yang selalu bikin aku ngerasa beruntung."
+            ];
+            var res = list[Math.floor(Math.random() * list.length)];
+            showBox('<img class="gif-result" style="object-fit:cover;" src="https://i.giphy.com/111ebonMs90YLu.gif" alt="Cat Love Eyes">' + res);
+        }
+
+        // 4. JANGAN NGAMBEK
+        function bikinGakNgambek() {
+            var pesanLucu = [
+                "🥺 <b>Jangan ngambek lagi dong cantik...</b><br>Nanti cantiknya berkurang 1%! Janji deh habis ini aku bakal lebih nurut, ngertiin kamu, dan makin sayang. Senyum dulu dong! 😁✨",
+                "😭 <b>Maafin aku yaa sayang...</b><br>Kalau aku ada salah, jangan didiemin gini yaa. Mending omelin aku aja daripada kamu cuek, akunya kangen banget tahu! 💖",
+                "🧸 <b>Aku Manjain & Peluk Online Deh!</b><br>Biar gak marah lagi, aku janji bakal lebih perhatian, turutin kemauan kamu, dan nemenin kamu seharian. Jangan ngambek lagi yaa! 🥰"
+            ];
+            var res = pesanLucu[Math.floor(Math.random() * pesanLucu.length)];
+            var html = '<img class="gif-result" style="object-fit:cover;" src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=300&q=80" alt="Crying Cat">' +
+                res + '<br><br>' +
+                '<button class="btn-send" onclick="maafinAkuWA()">📲 Kirim "Udah Gak Marah" ke WA</button>';
+            showBox(html);
+        }
+
+        function maafinAkuWA() {
+            var textFormatted = encodeURIComponent("Iya deh, aku udah nggak marah/ngambek lagi sama kamu. Tapi janji harus makin sayang & turutin kemauan aku ya! 🥺💖");
+            window.open('https://api.whatsapp.com/send?phone=' + NOMOR_WA + '&text=' + textFormatted, '_blank');
+        }
+
+        // 5. ACAK AGENDA
+        function spinDateIdea() {
+            var activities = [
+                "🌙 <b>Hasil Acak Agenda:</b> Sleepcall bareng malam ini sampai ketiduran! 😴",
+                "🎮 <b>Hasil Acak Agenda:</b> Main game bareng seru-seruan hari ini! 👾",
+                "💬 <b>Hasil Acak Agenda:</b> Chattingan santai seharian bahas apa aja bareng aku! 📱"
+            ];
+            var res = activities[Math.floor(Math.random() * activities.length)];
+            showBox('<img class="gif-result" src="https://api.iconify.design/fluent-emoji:smiling-cat-with-heart-eyes.svg" alt="Cat Smile Cute">' + res + '<br><br><span style="font-size:0.75rem; color:#f472b6;">Kirim screenshot ini ke WA kalau kamu setuju sama hasilnya! 😉</span>');
+        }
+
+        // 6. FORM KETIK PESAN
+        function tampilFormKetik() {
+            var html = '<img class="gif-result" style="object-fit:cover;" src="https://i.giphy.com/JIX9t2j0ZTN9S.gif" alt="Cat Typing">' +
+                '✍️ <b>Tulis Pesan / Keinginan Kamu:</b><br>' +
+                '<span style="font-size:0.75rem; color:#cbd5e1;">Ketik apa aja yang mau kamu bilang ke aku hari ini:</span>' +
+                '<textarea id="pesanDia" class="input-text" placeholder="Tulis di sini ya cantik..."></textarea>' +
+                '<button class="btn-send" onclick="kirimKeWA()">📲 Kirim Langsung ke WA Aku</button>';
+            showBox(html);
+        }
+
+        function kirimKeWA() {
+            var isian = document.getElementById("pesanDia").value;
+            if(!isian.trim()) {
+                alert("Ketik sesuatu dulu ya cantik sebelum dikirim!");
+                return;
+            }
+            var textFormatted = encodeURIComponent('Hai! Ini pesan aku dari web Girlfriend Day:\n\n"' + isian + '"');
+            window.open('https://api.whatsapp.com/send?phone=' + NOMOR_WA + '&text=' + textFormatted, '_blank');
+        }
+
+        // 7. SPIN SEBERAPA BESAR CINTAKU
+        function pilihVoucher() {
+            var opsiAngka = ["100%", "1.000%", "50.000%", "999.999%", "Infinity %"];
+            showBox(
+                '<div style="text-align:center;">' +
+                    '<img class="gif-result" src="https://api.iconify.design/fluent-emoji:kissing-cat.svg" alt="Kissing Cat">' +
+                    '<b style="color:#f472b6;">🎰 Mengacak Tingkat Cinta...</b><br>' +
+                    '<div id="angkaSpin" style="font-size: 1.8rem; font-weight: 800; color: #38bdf8; margin: 15px 0;">100%</div>' +
+                '</div>'
+            );
+
+            var i = 0;
+            var interval = setInterval(function() {
+                var el = document.getElementById("angkaSpin");
+                if (el) {
+                    el.innerText = opsiAngka[i % opsiAngka.length];
+                }
+                i++;
+            }, 100);
+
+            setTimeout(function() {
+                clearInterval(interval);
+                var hasilAkhir = "Infinity % (Tak Hingga)";
+                var pesan = "Nggak bisa dihitung pake angka lagi, pokoknya sayang banget banget! 🌌✨";
+                
+                var htmlHasil = '<img class="gif-result" src="https://api.iconify.design/fluent-emoji:kissing-cat.svg" alt="Kissing Cat">' +
+                    '🎉 <b>HASIL SPINNER CINTA:</b><br><br>' +
+                    '<div style="font-size: 1.3rem; font-weight: 800; color: #f472b6; text-align: center; margin-bottom: 8px;">' +
+                        hasilAkhir +
+                    '</div>' +
+                    '<div style="font-size: 0.85rem; color: #e2e8f0; background: rgba(244, 114, 182, 0.15); padding: 12px; border-radius: 12px; border: 1px solid #f472b6; text-align: center;">' +
+                        pesan +
+                    '</div><br>' +
+                    '<button class="btn btn-send" onclick="klaimHasilWA(\'' + hasilAkhir + '\', \'' + pesan + '\')">📲 Kirim Hasil Ini ke WA Aku</button>';
+                showBox(htmlHasil);
+            }, 2000);
+        }
+
+        function klaimHasilWA(persen, pesan) {
+            var textFormatted = encodeURIComponent('Hai! Aku baru aja nge-spin "Seberapa Besar Cintaku" dan hasilnya *' + persen + '*!\n\n"' + pesan + '" 💖🎰');
+            window.open('https://api.whatsapp.com/send?phone=' + NOMOR_WA + '&text=' + textFormatted, '_blank');
+        }
+    </script>
+</body>
+</html>
